@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1,width=device-width">
+    <title>Movies</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="resources/css/Folio.css">
+    <link rel="stylesheet" href="resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/css/main.css">
+    <script type="text/javascript" src="resources/js/jquery.min.js"></script>
+    <script type="text/javascript" src="resources/js/Folio.min.js"></script>
+    <script type="text/javascript" src="resources/js/main.js"></script>
+</head>
+<body>
+<div id="header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h1 id="logo">
+                    <span class="glyphicon glyphicon-film"></span>
+                    Movies
+                </h1>
+            </div>
+        </div>
+        <div class="row" id="search-option-row">
+            <div class="col-sm-6">
+                <input title="Search Movies" placeholder="Search Movies" type="text" id="movie-title" value="">
+            </div>
+            <div class="col-sm-2">
+                <input title="Movie Year" placeholder="Movie Year" type="number" min="1900" max="2100" id="movie-year"
+                       value="">
+            </div>
+            <div class="col-sm-4">
+                <a id="search-button" class="glyphicon glyphicon-search"></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="pagination-top" class="pagination"
+     data-Folio
+     data-total-pages="100"
+     data-max-pages="9"
+     data-active-page="1"
+     data-previous-class="glyphicon glyphicon-chevron-left"
+     data-next-class="glyphicon glyphicon-chevron-right"
+     data-infinite-scrolling="true"
+     data-on-update="getPage"
+     data-disable-initial-on-update="true"></div>
+<div id="movie-container" class="container-fluid"></div>
+<div id="pagination-bottom" class="pagination"
+     data-Folio
+     data-total-pages="100"
+     data-max-pages="9"
+     data-active-page="1"
+     data-previous-class="glyphicon glyphicon-chevron-left"
+     data-next-class="glyphicon glyphicon-chevron-right"
+     data-infinite-scrolling="true"
+     data-on-update="getPage"
+     data-disable-initial-on-update="true"></div>
+<div id="loading">
+    <h1>Loading...</h1>
+</div>
+</body>
+</html>
