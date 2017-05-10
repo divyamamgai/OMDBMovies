@@ -9,18 +9,20 @@ export class MovieService {
 
   private omdbAPI: string = 'http://www.omdbapi.com/';
 
-  public pages: Observable<number[]>;
-
   constructor(private http: Http) {
   }
 
-  getMovies(title: string, year: number, page: number = 1): Observable<Movie[]> {
+  getMovies(that: any, page: number = 1): Observable<Movie[]> {
+    document.querySelector('#loading').classList.add('show');
     return this.http
-      .get(`${this.omdbAPI}?s=${title}&y=${year}&page=${page}`)
+      .get(`${this.omdbAPI}?s=${that.searchTitle}&y=${that.searchYear}&page=${page}`)
       .map(function (response) {
         const jsonResponse = response.json();
-        const totalPages: number = Math.ceil(parseInt(jsonResponse.totalResults) / jsonResponse.Search.length);
-        this.pages = Array.apply(null, {length: totalPages}).map(Number.call, Number);
+        if (page == 1) {
+          const totalPages: number = Math.ceil(parseInt(jsonResponse.totalResults) / jsonResponse.Search.length);
+          that.pages = Array.apply(null, {length: totalPages}).map(Number.call, Number);
+        }
+        document.querySelector('#loading').classList.remove('show');
         return jsonResponse.Search as Movie[];
       });
   }

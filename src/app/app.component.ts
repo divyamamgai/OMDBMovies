@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MovieService} from './movie.service';
 import {Movie} from './movie';
 import {Observable} from 'rxjs';
@@ -11,13 +11,19 @@ import {Observable} from 'rxjs';
 })
 export class AppComponent {
 
-  movies: Observable<Movie[]>;
+  public searchTitle: string;
+  public searchYear: number;
+  public movies: Observable<Movie[]>;
+  public pages: number[];
+  public loadingElement;
 
   constructor(public movieService: MovieService) {
   }
 
   search(title: string, year: number) {
-    this.movies = this.movieService.getMovies(title, year);
+    this.searchTitle = title;
+    this.searchYear = year;
+    this.movies = this.movieService.getMovies(this);
   }
 
   onSearchButtonClick(title: string, year: number) {
@@ -26,6 +32,10 @@ export class AppComponent {
     } else {
       alert('Please provide a Movie Title to search for.');
     }
+  }
+
+  onPageChange(page) {
+    this.movies = this.movieService.getMovies(this, page);
   }
 
 }

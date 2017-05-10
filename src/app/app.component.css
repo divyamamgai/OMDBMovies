@@ -40,6 +40,16 @@ input, select {
   width: 100%;
 }
 
+label {
+  color: #343434;
+}
+
+select {
+  display: inline-block;
+  width: auto;
+  min-width: 8rem;
+}
+
 input:focus, select:focus {
   border-bottom-color: #0D47A1;
 }

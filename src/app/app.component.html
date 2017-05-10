@@ -17,8 +17,9 @@
                max="2100" value="">
       </div>
       <div class="col-sm-2">
-        <select #page title="page">
-          <option *ngFor="let page of movieService.pages">{{page}}</option>
+        <label for="page">Page</label>
+        <select #page id="page" title="page" (change)="onPageChange(page.value)">
+          <option *ngFor="let page of pages" value="{{page+1}}">{{page+1}}</option>
         </select>
       </div>
       <div class="col-sm-2">
@@ -37,4 +38,7 @@
     <br>
     <span title="Movie Year" class="movie-year">{{movie.Year}}</span>
   </div>
+</div>
+<div id="loading">
+  <h1>Loading...</h1>
 </div>
