@@ -1,0 +1,40 @@
+<div id="header">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h1 id="logo">
+          <span class="glyphicon glyphicon-film"></span>
+          Movies
+        </h1>
+      </div>
+    </div>
+    <div class="row" id="search-option-row">
+      <div class="col-sm-6">
+        <input #movieTitle id="movie-title" title="Search Movies" placeholder="Search Movies" type="text" value="">
+      </div>
+      <div class="col-sm-2">
+        <input #movieYear id="movie-year" title="Movie Year" placeholder="Movie Year" type="number" min="1900"
+               max="2100" value="">
+      </div>
+      <div class="col-sm-2">
+        <select #page title="page">
+          <option *ngFor="let page of movieService.pages">{{page}}</option>
+        </select>
+      </div>
+      <div class="col-sm-2">
+        <a id="search-button" class="glyphicon glyphicon-search"
+           (click)="onSearchButtonClick(movieTitle.value, movieYear.value)"></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="movie-container" class="container-fluid">
+  <div class="movie col-xs-12 col-sm-6 col-md-6 col-lg-4" *ngFor="let movie of movies | async">
+    <img class="movie-poster" title="Movie Poster" alt="Movie Poster" [src]="movie.Poster">
+    <h1 title="Movie Title" class="movie-title">{{movie.Title}}</h1>
+    <a class="movie-link" target="_blank" href="http://www.imdb.com/title/{{movie.imdbID}}">
+      <span class="glyphicon glyphicon-share"></span> View in IMDB</a>
+    <br>
+    <span title="Movie Year" class="movie-year">{{movie.Year}}</span>
+  </div>
+</div>
