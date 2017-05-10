@@ -1,10 +1,10 @@
-import { FYLEMoviesPage } from './app.po';
+import { OMDBMoviesPage } from './app.po';
 
-describe('fylemovies App', () => {
-  let page: FYLEMoviesPage;
+describe('omdbmovies App', () => {
+  let page: OMDBMoviesPage;
 
   beforeEach(() => {
-    page = new FYLEMoviesPage();
+    page = new OMDBMoviesPage();
   });
 
   it('should display message saying app works', () => {

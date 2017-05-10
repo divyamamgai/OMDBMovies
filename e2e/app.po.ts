@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class FYLEMoviesPage {
+export class OMDBMoviesPage {
   navigateTo() {
     return browser.get('/');
   }
